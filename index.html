@@ -34,13 +34,19 @@
                 backdrop-filter: blur(8px);
                 -webkit-backdrop-filter: blur(8px);
             }
+            /* 背景图片自适应类 */
+            .bg-image-responsive {
+                background-size: cover;      /* 保持比例并覆盖整个容器 */
+                background-position: center; /* 图片居中显示 */
+                background-repeat: no-repeat; /* 不重复平铺 */
+                background-attachment: fixed; /* 固定背景，内容滚动时背景不动 */
+            }
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 font-sans 
-               bg-cover bg-center bg-fixed" 
+<body class="min-h-screen flex items-center justify-center p-4 font-sans bg-image-responsive" 
       style="background-image: url('background.png');">
-    <!-- 半透明遮罩层，使文字更清晰 -->
+    <!-- 半透明遮罩层，增强文字可读性 -->
     <div class="fixed inset-0 bg-black/30 z-0"></div>
     
     <div class="max-w-md w-full bg-white/90 bg-blur rounded-2xl shadow-xl overflow-hidden 
@@ -63,7 +69,6 @@
         </div>
     </div>
 
-    <!-- 简单的动画效果 -->
     <script>
         // 页面加载时的淡入效果
         document.addEventListener('DOMContentLoaded', () => {
@@ -76,6 +81,11 @@
                 container.style.opacity = '1';
                 container.style.transform = 'translateY(0)';
             }, 100);
+        });
+
+        // 窗口大小改变时调整背景（增强兼容性）
+        window.addEventListener('resize', () => {
+            document.body.style.backgroundSize = 'cover';
         });
     </script>
 
