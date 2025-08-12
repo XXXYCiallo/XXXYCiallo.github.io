@@ -30,11 +30,21 @@
             .transition-custom {
                 transition: all 0.3s ease;
             }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+            }
         }
     </style>
 </head>
-<body class="min-h-screen bg-gray-50 flex items-center justify-center p-4 font-sans">
-    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-[1.01] transition-custom">
+<body class="min-h-screen flex items-center justify-center p-4 font-sans 
+               bg-cover bg-center bg-fixed" 
+      style="background-image: url('background.png');">
+    <!-- 半透明遮罩层，使文字更清晰 -->
+    <div class="fixed inset-0 bg-black/30 z-0"></div>
+    
+    <div class="max-w-md w-full bg-white/90 bg-blur rounded-2xl shadow-xl overflow-hidden 
+               transform hover:scale-[1.01] transition-custom relative z-10">
         <div class="bg-gradient-custom p-8 text-center">
             <h1 class="text-[clamp(1.8rem,2vw,3rem)] font-bold text-white text-shadow leading-tight">Ciallo～(∠・ω&lt; )⌒★</h1>
         </div>
@@ -48,7 +58,7 @@
                 </a>
             </div>
         </div>
-        <div class="bg-gray-50 p-4 text-center text-gray-500 text-sm">
+        <div class="bg-gray-50/90 p-4 text-center text-gray-500 text-sm">
             <p>感谢您的访问 ❤️</p>
         </div>
     </div>
