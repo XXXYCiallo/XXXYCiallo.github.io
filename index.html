@@ -2,11 +2,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XXXY的个人网站</title>
-    <!-- 添加网站图标 -->
+    <!-- 网站图标 -->
     <link rel="icon" href="cy.png" type="image/png">
     <link rel="shortcut icon" href="cy.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 引入TTC格式的自定义字体 -->
+    <style>
+        @font-face {
+            font-family: 'UD Digi Kyokasho NK-B';
+            src: url('fonts/UD-Digi-Kyokasho-NK-B.ttc') format('truetype-collection');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -17,80 +28,84 @@
                     },
                     fontFamily: {
                         sans: ['SimHei', '黑体', 'system-ui', 'sans-serif'],
+                        ud: ['"UD Digi Kyokasho NK-B"', 'sans-serif']
                     },
                 }
             }
         }
     </script>
+    
     <style type="text/tailwindcss">
         @layer utilities {
             .text-shadow {
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             }
-            .bg-gradient-custom {
-                background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            .text-shadow-lg {
+                text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
             }
             .transition-custom {
                 transition: all 0.3s ease;
             }
-            .bg-blur {
-                backdrop-filter: blur(8px);
-                -webkit-backdrop-filter: blur(8px);
-            }
-            /* 背景图片自适应类 */
             .bg-image-responsive {
-                background-size: cover;      /* 保持比例并覆盖整个容器 */
-                background-position: center; /* 图片居中显示 */
-                background-repeat: no-repeat; /* 不重复平铺 */
-                background-attachment: fixed; /* 固定背景，内容滚动时背景不动 */
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
             }
         }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4 font-sans bg-image-responsive" 
       style="background-image: url('background.png');">
-    <!-- 半透明遮罩层，增强文字可读性 -->
+    <!-- 半透明遮罩层增强文字可读性 -->
     <div class="fixed inset-0 bg-black/30 z-0"></div>
     
-    <div class="max-w-md w-full bg-white/90 bg-blur rounded-2xl shadow-xl overflow-hidden 
-               transform hover:scale-[1.01] transition-custom relative z-10">
-        <div class="bg-gradient-custom p-8 text-center">
-            <h1 class="text-[clamp(1.8rem,2vw,3rem)] font-bold text-white text-shadow leading-tight">Ciallo～(∠・ω&lt; )⌒★</h1>
+    <!-- 主要内容 - 完全无卡片设计 -->
+    <div class="max-w-2xl w-full text-center relative z-10 transform hover:scale-[1.02] transition-custom p-6">
+        <!-- 使用UD Digi Kyokasho NK-B字体的标题（已缩小） -->
+        <h1 class="font-ud text-[clamp(1.8rem,5vw,3rem)] font-bold text-white text-shadow-lg leading-tight mb-8">
+            Ciallo～(∠・ω&lt; )⌒★
+        </h1>
+        
+        <h2 class="text-[clamp(1.2rem,3vw,1.8rem)] text-white text-shadow mb-6">关于我</h2>
+        
+        <!-- 自我介绍内容 -->
+        <div class="text-white text-lg md:text-xl mb-8 leading-relaxed text-shadow">
+            <p class="mb-4">大家好！我是XXXY，一名对技术充满热情的开发者/设计师。我热爱创造有意义的项目，探索新的技术领域，并分享我的学习心得。</p>
+            
+            <p class="mb-4">在这个网站上，你可以找到我的一些作品、项目记录以及日常思考。我主要关注前端开发、UI设计和开源技术，偶尔也会分享一些生活中的有趣发现。</p>
+            
+            <p>如果你对我的项目感兴趣，或者有任何合作想法，欢迎通过下方链接访问我的主页，与我取得联系！</p>
         </div>
-        <div class="p-8">
-            <p class="text-gray-600 text-lg mb-8 text-center">
-                这里是XXXY的静态个人网站。
-            </p>
-            <div class="text-center">
-                <a href="https://xxxyciallo.github.io/ciallo.github.io/" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-custom shadow-lg hover:shadow-xl">
-                    <i class="fa fa-link mr-2"></i>Time & Date
-                </a>
-            </div>
+        
+        <div class="mt-10">
+            <a href="https://xxxyciallo.github.io/ciallo.github.io/" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-custom shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                <i class="fa fa-link mr-2"></i>Time & Date
+            </a>
         </div>
-        <div class="bg-gray-50/90 p-4 text-center text-gray-500 text-sm">
+        
+        <div class="text-center text-white/90 text-sm mt-12">
             <p>感谢您的访问 ❤️</p>
         </div>
     </div>
 
     <script>
-        // 页面加载时的淡入效果
+        // 页面加载动画
         document.addEventListener('DOMContentLoaded', () => {
-            const container = document.querySelector('div.max-w-md');
+            const container = document.querySelector('div.max-w-2xl');
             container.style.opacity = '0';
-            container.style.transform = 'translateY(20px)';
+            container.style.transform = 'translateY(30px)';
             
             setTimeout(() => {
-                container.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                container.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 container.style.opacity = '1';
                 container.style.transform = 'translateY(0)';
             }, 100);
         });
 
-        // 窗口大小改变时调整背景（增强兼容性）
+        // 窗口大小调整时保持背景适配
         window.addEventListener('resize', () => {
             document.body.style.backgroundSize = 'cover';
         });
     </script>
-
-
 </body></html>
