@@ -16,6 +16,21 @@
             font-weight: normal;
             font-style: normal;
         }
+
+        /* 字符抖动动画 */
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+
+        .shake-char {
+            display: inline-block;
+            animation: shake 0.5s infinite ease-in-out;
+            animation-delay: calc(var(--char-index) * 0.05s); /* 每个字符延迟不同 */
+        }
     </style>
     
     <script>
@@ -62,20 +77,22 @@
     
     <!-- 主要内容 - 完全无卡片设计 -->
     <div class="max-w-2xl w-full text-center relative z-10 transform hover:scale-[1.02] transition-custom p-6">
-        <!-- 使用UD Digi Kyokasho NK-B字体的标题（已缩小） -->
-        <h1 class="font-ud text-[clamp(1.8rem,5vw,3rem)] font-bold text-white text-shadow-lg leading-tight mb-8">
-            Ciallo～(∠・ω&lt; )⌒★
+        <!-- 使用UD字体并带字符抖动效果的标题 -->
+        <h1 class="font-ud text-[clamp(1.8rem,5vw,3rem)] font-bold text-white text-shadow-lg leading-tight mb-8" id="shake-title">
+            <!-- 每个字符单独包裹以实现独立抖动 -->
         </h1>
         
         <h2 class="text-[clamp(1.2rem,3vw,1.8rem)] text-white text-shadow mb-6">关于我</h2>
         
         <!-- 自我介绍内容 -->
         <div class="text-white text-lg md:text-xl mb-8 leading-relaxed text-shadow">
-            <p class="mb-4">大家好！我是XXXY，一名对技术充满热情的开发者/设计师。我热爱创造有意义的项目，探索新的技术领域，并分享我的学习心得。</p>
+            <p class="mb-4">大家好！我是XXXY，一名对技术充满热情的高中生。</p>
             
-            <p class="mb-4">在这个网站上，你可以找到我的一些作品、项目记录以及日常思考。我主要关注前端开发、UI设计和开源技术，偶尔也会分享一些生活中的有趣发现。</p>
+            <p class="mb-4">我热衷于摄影和高科技，同时维护一个QQ机器人的运行。</p>
             
-            <p>如果你对我的项目感兴趣，或者有任何合作想法，欢迎通过下方链接访问我的主页，与我取得联系！</p>
+            <p class="mb-4">在这个网站上，你<s>只</s>可以找到我的<s>一个</s>作品。</p>
+            
+            <p>如果你对我的项目感兴趣，或者有任何建议和想法，欢迎加我QQ（385713228），与我取得联系！</p>
         </div>
         
         <div class="mt-10">
@@ -90,6 +107,20 @@
     </div>
 
     <script>
+        // 处理抖动文字 - 将每个字符拆分为单独元素并添加动画
+        const titleText = "Ciallo～(∠・ω< )⌒★";
+        const titleElement = document.getElementById('shake-title');
+        
+        // 拆分每个字符并添加到标题元素
+        titleText.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            span.classList.add('shake-char');
+            // 设置每个字符的动画延迟，实现错落有致的抖动
+            span.style.setProperty('--char-index', index);
+            titleElement.appendChild(span);
+        });
+
         // 页面加载动画
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.querySelector('div.max-w-2xl');
